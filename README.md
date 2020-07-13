@@ -17,3 +17,9 @@ pip install requests
 
 *Put the API into Project Base Setting.py file* 
 [https://console.developers.google.com/](https://console.developers.google.com/)
+
+**You May Contribute in Below Issues**
+
+1.Download the file from server-level to Local Directories, Currently Downloaded file stored in Server Dir Level.
+
+2.PyTube Playlist() maynot work correctly. You may fix this up.
