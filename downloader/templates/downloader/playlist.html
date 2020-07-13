@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Downloader</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <link rel="stylesheet" href=" {% static 'downloader/home.css' %} ">
+    
+</head>
+<body onload="loading()">
+    <main role="main">
+
+      
+        <section class="jumbotron text-center">
+            <div class="container">
+              <h1 class="jumbotron-heading"> <i style="color:#fc2803;" class="fab logo fa-youtube"></i> YouTube Downloader</h1>
+              <p class="lead">Get Yourself Live In Offline!</p>
+              
+              <form method="POST" id="form" action="{% url 'downloads' %}">
+                {% csrf_token %}
+                  <div class="row">
+                      <div class="input-group mb-3 col-md-10" style="margin:0 auto">
+                         
+                          <input type="text" name="searchField" placeholder="Place Playlist Url....." class="form-control" aria-label="Username" required>
+                      </div>
+                      
+                  </div>
+                  <p>
+                  <button type="submit" name="submit" value="search" class="btn btn-hover color-2 my-2"><i class="fas fa-download"></i> Download</button>
+                  
+                  
+                  </p>
+              </form>
+              
+            </div>
+        </section>
+      
+        <div class="album py-5 bg-light" >
+          <div class="container">
+              <div class="loader" id="loader" style="display: none;">
+              
+              </div>
+            
+          </div>
+        </div>
+      
+      </main>
+
+
+
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+<script>
+    var el = document.querySelector('.loader')
+    function loading(){
+        el.style.display = 'none'
+        console.log('hello');
+    }
+
+    $(document).ready(function(){
+
+        $('#form').submit(function() {
+        $('#loader').addClass('loader');
+        $('#loader').css('display','block');
+        });
+   });
+
+</script>
+
+</body>
+</html>
